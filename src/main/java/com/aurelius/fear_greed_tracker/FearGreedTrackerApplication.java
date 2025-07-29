@@ -48,11 +48,7 @@ public class FearGreedTrackerApplication {
 				registry.addMapping("/api/**") // Apply CORS to all endpoints under /api
 						// Explicitly list all allowed origins when allowCredentials is true
 						.allowedOrigins(
-								"http://127.0.0.1:5500", // Your Live Server
-								"http://localhost:5500", // Another common Live Server resolution
-								"http://localhost:5173", // If you use Vite dev server
-								"http://127.0.0.1:8000", // If you use http-server on port 8000
-								"http://localhost:8000"  // If you use http-server on port 8000
+								//your allowed origins only for better safety, never use *
 						)
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 						.allowedHeaders("*")
