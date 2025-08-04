@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # Service for your Spring Boot application
+  app:
+    # Use the current directory as the build context to find your Dockerfile
+    build: .
+    container_name: fear_greed_tracker_app
+    ports:
+      - "8080:8080"
+    environment:
+      # Use the service name 'postgres_container' for the database URL.
+      # This is the service name from your other docker-compose.yml file.
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_container:5432/fear_greed_db
+      SPRING_DATASOURCE_USERNAME: suhas
+      SPRING_DATASOURCE_PASSWORD: suhas
+    networks:
+      - companyms_postgres_network
+
+networks:
+  # Define the network to be used, and tell Docker Compose that it already exists
+  companyms_postgres_network:
+    name: companyms_postgres_network
+    # This flag is what allows this file to use an already running network
+    external: true
